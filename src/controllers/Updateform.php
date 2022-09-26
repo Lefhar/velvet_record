@@ -2,25 +2,29 @@
 
 namespace Controller;
 
-use Models\headerModel;
-use Models\updateformModel;
-use Models\usersModel;
+use Models\HeaderModel;
+use Models\UpdateformModel;
+use Models\UsersModel;
 
-class updateform
+class Updateform
 {
 
     /**
-     * @brief controleur de la page de modification d'un disque
+     * @brief Controller de la page de modification d'un disque
      * @return void
      */
     public function index()
     {
 
-        $class = new usersModel();
+        $class = new UsersModel();
+        if(!$class->isAdmin())
+        {
+            header('location: ../');
+        }
         $user = $class->getUser();
-        $head = new headerModel();
+        $head = new HeaderModel();
         $header["menu"] = $head->catHead();
-        $disk = new updateformModel();
+        $disk = new UpdateformModel();
         if (!empty($_GET['id'])) {
             $disk->setId($_GET['id']);
         }

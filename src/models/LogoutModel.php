@@ -1,7 +1,7 @@
 <?php
 
 namespace Models;
-class logoutModel
+class LogoutModel
 {
     /**
      * @brief  Fonction de déconnexion supprime la session et le cookie
@@ -12,9 +12,9 @@ class logoutModel
         $data = array();
         $data['success'] = false;
         if (!empty($_POST['confirm'])) {
-            if (!empty($_SESSION["controllers\login"])) {
-                setcookie('controllers\login', "", time() - 3200);
-                unset($_SESSION['controllers\login']);
+            if (!empty($_SESSION["login"])) {
+                setcookie('login', "", time() - 3200);
+                unset($_SESSION['login']);
                 session_destroy();
                 $data['success'] = true;
             }

@@ -2,25 +2,29 @@
 
 namespace Controller;
 
-use Models\deleteModel;
-use Models\headerModel;
-use Models\usersModel;
+use Models\DeleteModel;
+use Models\HeaderModel;
+use Models\UsersModel;
 
-class deletescript
+class Deletescript
 {
 
     /**
-     * controleur de suppréssion d'un disque avec sont image
+     * Controller de suppression d'un disque avec son image
      * @return void
      */
     public function index()
     {
 
-        $class = new usersModel();
+        $class = new UsersModel();
+        if(!$class->isAdmin())
+        {
+            header('location: ../');
+        }
         $user = $class->getUser();
-        $head = new headerModel();
+        $head = new HeaderModel();
         $header["menu"] = $head->catHead();
-        $disk = new deleteModel();
+        $disk = new DeleteModel();
         $data = $disk->del();
         if ($data['success']) {
             header('Location: index.php');

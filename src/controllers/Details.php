@@ -2,25 +2,25 @@
 
 namespace Controller;
 
-use Models\detailsModel;
-use Models\headerModel;
-use Models\usersModel;
+use Models\DetailsModel;
+use Models\HeaderModel;
+use Models\UsersModel;
 
 class details
 {
 
     /**
-     * @brief  Controleur de la page controllers\details pour un disque
+     * @brief  Controller de la page controllers details pour un disque
      * @return void
      */
     public function index()
     {
 
-        $class = new usersModel();
+        $class = new UsersModel();
         $user = $class->getUser();
-        $head = new headerModel();
+        $head = new HeaderModel();
         $header["menu"] = $head->catHead();
-        $disk = new detailsModel();
+        $disk = new DetailsModel();
         if (!empty($_GET['id'])) {
             $disk->setId($_GET['id']);
         }

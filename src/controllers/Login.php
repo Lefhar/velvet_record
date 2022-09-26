@@ -3,10 +3,10 @@
 namespace Controller;
 
 use Exception;
-use Models\headerModel;
-use Models\usersModel;
+use Models\HeaderModel;
+use Models\UsersModel;
 
-class login
+class Login
 {
     /**
      * @throws Exception
@@ -16,7 +16,7 @@ class login
         $head = new headerModel();
         $header["menu"] = $head->catHead();
 
-        $class = new usersModel();
+        $class = new UsersModel();
         $data = $class->sign();
 
         $user = $class->getUser();

@@ -2,21 +2,21 @@
 
 namespace Controller;
 
-use Models\headerModel;
-use Models\usersModel;
+use Models\HeaderModel;
+use Models\UsersModel;
 
 class erreur404
 {
     /**
-     * @brief controleur d'une erreur 404
+     * @brief Controller d'une erreur 404
      * @return void
      */
     public function index()
     {
 
-        $class = new usersModel();
+        $class = new UsersModel();
         $user = $class->getUser();
-        $head = new headerModel();
+        $head = new HeaderModel();
         $header["menu"] = $head->catHead();
         include(baseDir . 'views/header.php');
         include(baseDir . 'views/erreur404.php');

@@ -2,24 +2,24 @@
 
 namespace Controller;
 
-use Models\headerModel;
-use Models\homeModel;
-use Models\usersModel;
+use Models\HeaderModel;
+use Models\HomeModel;
+use Models\UsersModel;
 
-class home
+class Home
 {
     /**
-     * @brief contrôleur par defaut de l'accueil qui contient la liste des disques
+     * @brief Contrôleur par default de l'accueil qui contient la liste des disques
      * @return void
      */
     public function index()
     {
 
-        $class = new usersModel();
+        $class = new UsersModel();
         $user = $class->getUser();
-        $head = new headerModel();
+        $head = new HeaderModel();
         $header["menu"] = $head->catHead();
-        $disk = new homeModel();
+        $disk = new HomeModel();
         if (!empty($_GET['p'])) {
             $disk->setPage($_GET['p']);
         }

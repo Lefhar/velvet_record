@@ -2,6 +2,7 @@
 
 namespace Models;
 
+use Exception;
 use Src\Database;
 
 /**
@@ -13,7 +14,7 @@ class registerModel
 
 
     /**
-     * @brief  construction l'objet de la connexion avec l'ordre de se connecté à la bdd par la class include\Database
+     * @brief  Construction l'objet de la connexion avec l'ordre de se connecté à la bdd par la class include\Database
      */
     public function __construct()
     {
@@ -47,7 +48,7 @@ class registerModel
             ) {
                 $random = random_bytes(12);
                 $salt = bin2hex($random);
-                $password_hash = password_hash($_POST['password'] . $salt, PASSWORD_DEFAULT);// on appel la fonction password comme sa on reprend la même méthode d'assemblage du sel et du mot de passe
+                $password_hash = password_hash($_POST['password'] . $salt, PASSWORD_DEFAULT);// on appelle la fonction password comme sa on reprend la même méthode d'assemblage du sel et du mot de passe
                 $date_create = date('Y-m-d H:i:s');
                 $user = $this->db->prepare('select * from users where email=?');
                 $user->execute(array($_POST['email']));

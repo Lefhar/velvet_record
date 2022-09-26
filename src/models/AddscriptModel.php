@@ -2,14 +2,15 @@
 
 namespace Models;
 
+use PDO;
 use Src\Database;
 
-class addscriptModel
+class AddscriptModel
 {
-    private $db; // déclaration de la variable de connexion
+    private PDO $db; // déclaration de la variable de connexion
 
     /**
-     * @brief  construction l'objet de la connexion avec l'ordre de se connecté à la bdd par la class include\Database
+     * @brief  Construction l'objet de la connexion avec l'ordre de se connecté à la bdd par la class include\Database
      */
     public function __construct()
     {
@@ -17,7 +18,7 @@ class addscriptModel
     }
 
     /**
-     * @brief recupére le post d'ajout de disque
+     * @brief Recupére le post d'ajout de disque
      * @return array
      */
     public function post(): array

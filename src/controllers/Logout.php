@@ -2,18 +2,18 @@
 
 namespace Controller;
 
-use Models\logoutModel;
-use Models\usersModel;
+use Models\LogoutModel;
+use Models\UsersModel;
 
-class logout
+class Logout
 {
     public function index()
     {
 
-        $class = new usersModel();
+        $class = new UsersModel();
         $user = $class->getUser();
 
-        $obj = new logoutModel();
+        $obj = new LogoutModel();
         $data = $obj->out();
         if (isset($data['success'])) {
             header('Location: index.php');

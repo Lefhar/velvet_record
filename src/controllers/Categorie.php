@@ -2,27 +2,27 @@
 
 namespace Controller;
 
-use Models\categorieModel;
-use Models\headerModel;
-use Models\usersModel;
+use Models\CategorieModel;
+use Models\HeaderModel;
+use Models\UsersModel;
 
 /**
- * @brief controleur controllers\categorie gére les catégories par artiste id
+ * @brief Controller categorie gére les catégories par artiste id
  */
-class categorie
+class Categorie
 {
     /**
-     * @brief fonction index du contrôleur controllers\categorie
+     * @brief Fonction index du contrôleur controllers\categorie
      * @return void
      */
     public function index()
     {
 
-        $class = new usersModel();
+        $class = new UsersModel();
         $user = $class->getUser();
-        $head = new headerModel();
+        $head = new HeaderModel();
         $header["menu"] = $head->catHead();
-        $disk = new categorieModel();
+        $disk = new CategorieModel();
         if (!empty($_GET['p'])) {
             $disk->setPage($_GET['p']);
         }

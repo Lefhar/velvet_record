@@ -4,7 +4,7 @@ namespace Models;
 
 use Src\Database;
 
-class deleteModel
+class DeleteModel
 {
     private $db; // déclaration de la variable de connexion
 
@@ -17,7 +17,7 @@ class deleteModel
     }
 
     /**
-     * @brief supprime le disques ainsi que l'image
+     * @brief Supprime le disque ainsi que l'image
      * @return array
      */
     public function del(): array

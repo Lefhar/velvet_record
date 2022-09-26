@@ -2,26 +2,29 @@
 
 namespace Controller;
 
-use Models\addformModel;
-use Models\headerModel;
-use Models\usersModel;
+use Models\AddformModel;
+use Models\HeaderModel;
+use Models\UsersModel;
 
-class addform
+class Addform
 {
     /**
-     * @brief Controleur qui charge le formulaire d'ajout d'un disque
+     * @brief Controller qui charge le formulaire d'ajout d'un disque
      * @return void
      */
     public function index()
     {
 
-        $class = new usersModel();
+        $class = new UsersModel();
         $user = $class->getUser();
 
-        $head = new headerModel();
+        $head = new HeaderModel();
         $header["menu"] = $head->catHead();
-
-        $disk = new addformModel();
+        if(!$class->isAdmin())
+        {
+            header('location: ../');
+        }
+        $disk = new AddformModel();
         $data = $disk->index();
         include(baseDir . 'views/header.php');
         include(baseDir . 'views/add_form.php');

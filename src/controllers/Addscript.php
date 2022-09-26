@@ -6,22 +6,25 @@ use Models\addscriptModel;
 use Models\headerModel;
 use Models\usersModel;
 
-class addscript
+class Addscript
 {
 
     /**
-     * @brief controleur qui permet l'insertion en base de donné d'un disque
+     * @brief Controller qui permet l'insertion en base de donné d'un disque
      * @return void
      */
     public function index()
     {
 
-        $class = new usersModel();
+        $class = new UsersModel();
         $user = $class->getUser();
-        $head = new headerModel();
+        $head = new HeaderModel();
         $header["menu"] = $head->catHead();
-        $ajout = new addscriptModel();
-
+        $ajout = new AddscriptModel();
+        if(!$class->isAdmin())
+        {
+            header('location: ../');
+        }
         $data = $ajout->post();
         if ($data['success']) {
             header('Location: index.php');

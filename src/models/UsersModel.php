@@ -2,13 +2,15 @@
 
 namespace Models;
 
+use Exception;
+use PDO;
 use Src\Database;
 
 class usersModel
 {
-    private $db; // déclaration de la variable de connexion
-    public $_user;
-
+    private PDO $db; // déclaration de la variable de connexion
+    public array $_user;
+    public $role;
     /**
      * @brief  Construction l'objet de la connexion avec l'ordre de se connecté à la bdd par la class include\Database
      */
@@ -16,10 +18,10 @@ class usersModel
     {
         $this->db = Database::connect();
 
-        if (!empty($_COOKIE['controllers\login'])) {
+        if (!empty($_COOKIE['login'])) {
 
 
-            $_SESSION['controllers\login'] = $_COOKIE['controllers\login'];
+            $_SESSION['login'] = $_COOKIE['login'];
 
         }
 
@@ -32,19 +34,18 @@ class usersModel
     public function getUser(): array
     {
         $this->_user = array();
-        if (!empty($_SESSION['controllers\login'])) {
+        if (!empty($_SESSION['login'])) {
             $user = $this->db->prepare('select * from users where hash_connect=? ');
-            $user->execute(array($_SESSION['controllers\login']));
+            $user->execute(array($_SESSION['login']));
             $this->_user = $user->fetch();
 
         }
         return $this->_user;
-
     }
 
     /**
-     * @brief fonction pour la connexion utilisateur
-     * @return array sortie d'une erreur ou success pour si tout c'est bien passé
+     * @brief Fonction pour la connexion utilisateur
+     * @return array Sortie d'une erreur ou success pour si tout c'est bien passé
      * @throws Exception
      */
 
@@ -66,7 +67,7 @@ class usersModel
                 $user = $this->db->prepare('select * from users where email=? ');
                 $user->execute(array($_POST['email']));
                 $verif = $user->fetch();
-                $password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);// on appel la fonction password comme sa on reprend la même méthode d'assemblage du sel et du mot de passe
+                $password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);// on appelle la fonction password comme ça on reprend la même méthode d'assemblage du sel et du mot de passe
 
 
                 /**
@@ -75,11 +76,11 @@ class usersModel
                 if (password_verify($_POST['password'], $password_hash)) {
                     $random = random_bytes(12);
                     $hash_connect = bin2hex($random);
-                    $_SESSION['controllers\login'] = $hash_connect;
+                    $_SESSION['login'] = $hash_connect;
                     $update = $this->db->prepare('update users set date_connect=?, hash_connect=? where id=?');
                     $update->execute(array($date_create, $hash_connect, $verif['id']));
                     if (!empty($_POST['remember']) && $_POST['remember'] == "on") {
-                        setcookie('controllers\login', $hash_connect, time() + 3200);
+                        setcookie('login', $hash_connect, time() + 3200);
                     }
                     $data['success'] = true;
 
@@ -96,4 +97,14 @@ class usersModel
         return $data;
     }
 
+    public function isAdmin()
+    {
+        $userRole = $this->getUser();
+        if($userRole['roles']=="ADMIN")
+        {
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

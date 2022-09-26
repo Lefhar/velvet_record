@@ -1,15 +1,16 @@
 <?php
 
 namespace Models;
+use PDO;
 use Src\Database;
 
-class detailsModel
+class DetailsModel
 {
-    private $db; // déclaration de la variable de connexion
+    private PDO $db; // déclaration de la variable de connexion
     public $id;
 
     /**
-     * @brief  construction l'objet de la connexion avec l'ordre de se connecté à la bdd par la class include\Database
+     * @brief  Construction l'objet de la connexion avec l'ordre de se connecté à la bdd par la class include\Database
      */
     public function __construct()
     {
@@ -33,7 +34,7 @@ class detailsModel
     }
 
     /**
-     * @brief recupération des controllers\details du disque
+     * @brief Recupération des controllers\details du disque
      * @return array
      */
     public function index(): array

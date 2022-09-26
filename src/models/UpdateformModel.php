@@ -2,13 +2,14 @@
 
 namespace Models;
 
+use PDO;
 use Src\Database;
 
 class updateformModel
 {
 
-    private $db; // déclaration de la variable de connexion
-    public $id;
+    private PDO $db; // déclaration de la variable de connexion
+    public int $id;
 
     /**
      * @brief  Construction l'objet de la connexion avec l'ordre de se connecté à la bdd par la class include\Database
@@ -35,7 +36,7 @@ class updateformModel
     }
 
     /**
-     * @brief recupération des controllers\details du disque
+     * @brief Recupération des controllers\details du disque
      * @return array
      */
     public function index(): array

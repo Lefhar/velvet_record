@@ -4,11 +4,11 @@ namespace Models;
 use PDO;
 use Src\Database;
 
-class categorieModel
+class CategorieModel
 {
-    private $db; // déclaration de la variable de connexion
+    private PDO $db; // déclaration de la variable de connexion
     public $page;
-    public $artist;
+    public  $artist;
 
     /**
      * @brief  Construction l'objet de la connexion avec l'ordre de se connecté à la bdd par la class include\Database

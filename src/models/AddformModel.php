@@ -4,13 +4,13 @@ namespace Models;
 
 use Src\Database;
 
-class addformModel
+class AddformModel
 {
     private $db; // déclaration de la variable de connexion
 
 
     /**
-     * @brief  construction l'objet de la connexion avec l'ordre de se connecté à la bdd par la class include\Database
+     * @brief  Construction l'objet de la connexion avec l'ordre de se connecté à la bdd par la class include\Database
      */
     public function __construct()
     {
@@ -18,7 +18,7 @@ class addformModel
     }
 
     /**
-     * @brief retour la liste des artistes
+     * @brief Retour la liste des artistes
      * @return array|false
      */
     public function index()

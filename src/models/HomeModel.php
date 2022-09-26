@@ -5,13 +5,13 @@ namespace Models;
 use PDO;
 use Src\Database;
 
-class homeModel
+class HomeModel
 {
-    private $db; // déclaration de la variable de connexion
-    public $page;
+    private PDO $db; // déclaration de la variable de connexion
+    public int $page =1;
 
     /**
-     * @brief  construction l'objet de la connexion avec l'ordre de se connecté à la bdd par la class include\Database
+     * @brief  Construction l'objet de la connexion avec l'ordre de se connecté à la bdd par la class include\Database
      */
     public function __construct()
     {
@@ -25,11 +25,11 @@ class homeModel
 
     public function getPage(): int
     {
-        return (int)$this->page;
+        return $this->page;
     }
 
     /**
-     * @brief charge la liste des disques avec une pagination
+     * @brief Charge la liste des disques avec une pagination
      * @return array
      */
     public function index(): array

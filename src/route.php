@@ -3,82 +3,81 @@
 namespace Src;
 
 
-use Controller\addform;
-use Controller\addscript;
-use Controller\categorie;
-use Controller\deleteform;
-use Controller\deletescript;
-use Controller\details;
-use Controller\erreur404;
-use Controller\home;
-use Controller\login;
-use Controller\logout;
+use Controller\Addform;
+use Controller\Addscript;
+use Controller\Categorie;
+use Controller\Deleteform;
+use Controller\Deletescript;
+use Controller\Details;
+use Controller\Erreur404;
+use Controller\Home;
+use Controller\Login;
+use Controller\Logout;
 use Controller\Register;
-use Controller\updateform;
-use Controller\updatescript;
+use Controller\Updateform;
+use Controller\Updatescript;
 use Exception;
 
 class route
 {
     /**
-     * @brief Charge la include\route par defaut
+     * @brief Charge la route par default
      * @return void
      * @throws Exception
      */
     public function index()
     {
 
-        if (!empty($_GET['page'])) {
+        if(!empty($_GET['page'])) {
 
 
             switch ($_GET['page']) {
                 case 'add_form';
-                    $controller = new addform();
+                    $controller = new Addform();
                     break;
 
                 case 'add_script';
-                    $controller = new addscript();
+                    $controller = new Addscript();
                     break;
                 case 'categorie';
-                    $controller = new categorie();
+                    $controller = new Categorie();
                     break;
                 case 'delete_form';
-                    $controller = new deleteform();
+                    $controller = new Deleteform();
                     break;
                 case 'delete_script';
-                    $controller = new deletescript();
+                    $controller = new Deletescript();
                     break;
                 case 'details';
-                    $controller = new details();
+                    $controller = new Details();
                     break;
                 case 'login';
-                    $controller = new login();
+                    $controller = new Login();
                     break;
                 case 'logout';
-                    $controller = new logout();
+                    $controller = new Logout();
                     break;
                 case 'register';
                     $controller = new Register();
                     break;
                 case 'update_form';
-                    $controller = new updateform();
+                    $controller = new Updateform();
                     break;
                 case 'update_script';
-                    $controller = new updatescript();
+                    $controller = new Updatescript();
                     break;
                 case 'home';
-                    $controller = new home();
+                    $controller = new Home();
                     break;
                 default:
-                    $controller = new erreur404();
+                    $controller = new Erreur404();
 
 
             }
-            $controller->index();
         } else {
 
-            $controller = new home();
-            $controller->index();
+            $controller = new Home();
         }
+        $controller->index();
     }
 }

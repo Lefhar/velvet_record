@@ -4,7 +4,7 @@ namespace Models;
 
 use Src\Database;
 
-class updateModel
+class UpdateModel
 {
     private $db; // déclaration de la variable de connexion
 
@@ -18,7 +18,7 @@ class updateModel
     }
 
     /**
-     * @brief permet la mise à jour d'un disque avec ou sans nouvelle image
+     * @brief Permet la mise à jour d'un disque avec ou sans nouvelle image
      * @return array
      */
     public function update(): array

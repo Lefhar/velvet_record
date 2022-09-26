@@ -2,23 +2,27 @@
 
 namespace Controller;
 
-use Models\headerModel;
-use Models\updateModel;
-use Models\usersModel;
+use Models\HeaderModel;
+use Models\UpdateModel;
+use Models\UsersModel;
 
-class updatescript
+class Updatescript
 {
     /**
-     * @brief contrôleur de mise à jour du disque
+     * @brief Contrôleur de mise à jour du disque
      * @return void
      */
     public function index()
     {
-        $class = new usersModel();
+        $class = new UsersModel();
+        if(!$class->isAdmin())
+        {
+            header('location: ../');
+        }
         $user = $class->getUser();
-        $head = new headerModel();
+        $head = new HeaderModel();
         $header["menu"] = $head->catHead();
-        $disk = new updateModel();
+        $disk = new UpdateModel();
         $data = $disk->update();
         if ($data['success']) {
             header('Location: index.php');

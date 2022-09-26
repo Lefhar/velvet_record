@@ -2,21 +2,25 @@
 
 namespace Controller;
 
-use Models\headerModel;
-use Models\usersModel;
+use Models\HeaderModel;
+use Models\UsersModel;
 
-class deleteform
+class Deleteform
 {
     /**
-     * @brief Controleur de la confirmation de suppréssion d'un disque
+     * @brief Controller de la confirmation de suppression d'un disque
      * @return void
      */
     public function index()
     {
 
-        $class = new usersModel();
+        $class = new UsersModel();
         $user = $class->getUser();
-        $head = new headerModel();
+        if(!$class->isAdmin())
+        {
+            header('location: ../');
+        }
+        $head = new HeaderModel();
         $header["menu"] = $head->catHead();
         include(baseDir . 'views/header.php');
         include(baseDir . 'views/confirm_delete.php');
