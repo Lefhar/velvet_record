@@ -1,0 +1,19 @@
+{
+    "name": "fenix/velvet_records",
+    "description": "Site de vente de disque",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/",
+            "Controller\\": "src/controllers",
+            "Models\\": "src/models"
+        }
+    },
+    "authors": [
+        {
+            "name": "Lefebvre Harold",
+            "email": "73162352+Lefhar@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
