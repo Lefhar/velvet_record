@@ -6,7 +6,7 @@ use Models\headerModel;
 use Models\registerModel;
 use Models\usersModel;
 
-class Signup
+class Register
 {
     public function index()
     {

@@ -3,19 +3,19 @@
 namespace Src;
 
 
-use Controller\add_form;
-use Controller\add_script;
+use Controller\addform;
+use Controller\addscript;
 use Controller\categorie;
-use Controller\delete_form;
-use Controller\delete_script;
+use Controller\deleteform;
+use Controller\deletescript;
 use Controller\details;
 use Controller\erreur404;
 use Controller\home;
 use Controller\login;
 use Controller\logout;
-use Controller\Signup;
-use Controller\update_form;
-use Controller\update_script;
+use Controller\Register;
+use Controller\updateform;
+use Controller\updatescript;
 use Exception;
 
 class route
@@ -33,20 +33,20 @@ class route
 
             switch ($_GET['page']) {
                 case 'add_form';
-                    $controller = new add_form();
+                    $controller = new addform();
                     break;
 
                 case 'add_script';
-                    $controller = new add_script();
+                    $controller = new addscript();
                     break;
                 case 'categorie';
                     $controller = new categorie();
                     break;
                 case 'delete_form';
-                    $controller = new delete_form();
+                    $controller = new deleteform();
                     break;
                 case 'delete_script';
-                    $controller = new delete_script();
+                    $controller = new deletescript();
                     break;
                 case 'details';
                     $controller = new details();
@@ -58,13 +58,13 @@ class route
                     $controller = new logout();
                     break;
                 case 'register';
-                    $controller = new Signup();
+                    $controller = new Register();
                     break;
                 case 'update_form';
-                    $controller = new update_form();
+                    $controller = new updateform();
                     break;
                 case 'update_script';
-                    $controller = new update_script();
+                    $controller = new updatescript();
                     break;
                 case 'home';
                     $controller = new home();

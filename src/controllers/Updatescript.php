@@ -6,7 +6,7 @@ use Models\headerModel;
 use Models\updateModel;
 use Models\usersModel;
 
-class update_script
+class updatescript
 {
     /**
      * @brief contrôleur de mise à jour du disque

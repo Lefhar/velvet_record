@@ -2,13 +2,14 @@
 
 namespace Controller;
 
+use Models\addformModel;
 use Models\headerModel;
 use Models\usersModel;
 
-class delete_form
+class addform
 {
     /**
-     * @brief Controleur de la confirmation de suppréssion d'un disque
+     * @brief Controleur qui charge le formulaire d'ajout d'un disque
      * @return void
      */
     public function index()
@@ -16,11 +17,14 @@ class delete_form
 
         $class = new usersModel();
         $user = $class->getUser();
+
         $head = new headerModel();
         $header["menu"] = $head->catHead();
+
+        $disk = new addformModel();
+        $data = $disk->index();
         include(baseDir . 'views/header.php');
-        include(baseDir . 'views/confirm_delete.php');
+        include(baseDir . 'views/add_form.php');
         include(baseDir . 'views/footer.php');
     }
-
 }

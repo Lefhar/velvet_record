@@ -4,7 +4,7 @@ namespace Models;
 
 use Src\Database;
 
-class add_scriptModel
+class addscriptModel
 {
     private $db; // déclaration de la variable de connexion
 

@@ -2,15 +2,15 @@
 
 namespace Controller;
 
+use Models\addscriptModel;
 use Models\headerModel;
-use Models\update_formModel;
 use Models\usersModel;
 
-class update_form
+class addscript
 {
 
     /**
-     * @brief controleur de la page de modification d'un disque
+     * @brief controleur qui permet l'insertion en base de donné d'un disque
      * @return void
      */
     public function index()
@@ -20,14 +20,16 @@ class update_form
         $user = $class->getUser();
         $head = new headerModel();
         $header["menu"] = $head->catHead();
-        $disk = new update_formModel();
-        if (!empty($_GET['id'])) {
-            $disk->setId($_GET['id']);
+        $ajout = new addscriptModel();
+
+        $data = $ajout->post();
+        if ($data['success']) {
+            header('Location: index.php');
+        } else {
+            header('Location: index.php?page=add_form');
         }
-        $data = $disk->index();
         include(baseDir . 'views/header.php');
-        include(baseDir . 'views/update_form.php');
+        include(baseDir . 'views/add_form.php');
         include(baseDir . 'views/footer.php');
     }
-
 }

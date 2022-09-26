@@ -4,7 +4,7 @@ namespace Models;
 
 use Src\Database;
 
-class add_formModel
+class addformModel
 {
     private $db; // déclaration de la variable de connexion
 

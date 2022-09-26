@@ -6,7 +6,7 @@ use Models\deleteModel;
 use Models\headerModel;
 use Models\usersModel;
 
-class delete_script
+class deletescript
 {
 
     /**
