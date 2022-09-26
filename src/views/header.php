@@ -59,7 +59,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbaruserDropdown">
 
-                                <li><a class="dropdown-item" class="dropdown-item" href="index.php?page=logout">
+                                <li><a  class="dropdown-item" href="index.php?page=logout">
                                         Deconnexion
                                     </a></li>
 
@@ -80,8 +80,7 @@
     </nav>
     <div class="d-none d-sm-block">
         <a href="index.php">
-            <img class="img-fluid ban" alt="banniere velvet record" src="../../assets/images/banniere2.jpg"
-                 width="100%">
+            <img class="img-fluid ban" alt="banniere velvet record" src="../../assets/images/banniere2.jpg">
         </a>
     </div>
 </header>
