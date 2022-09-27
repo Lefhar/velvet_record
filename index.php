@@ -6,4 +6,7 @@ use Src\route;
 session_start();
 include('config.php');
 $route = new route();
-$route->index();
+try {
+    $route->index();
+} catch (Exception $e) {
+}
