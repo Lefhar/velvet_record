@@ -15,5 +15,8 @@
             "email": "73162352+Lefhar@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "require": {
+        "ext-fileinfo": "*",
+        "ext-pdo": "*"
+    }
 }
